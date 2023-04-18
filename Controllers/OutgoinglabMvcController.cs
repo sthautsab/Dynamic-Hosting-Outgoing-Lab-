@@ -14,7 +14,12 @@ namespace OutGoingLab.Controllers
         public ActionResult Index()
         {
             List<Outgoinglab> outgoingLabList = new List<Outgoinglab>();
-            client.BaseAddress = new Uri("http://localhost:57305/api/");
+
+            var dynamicuri = Request.Url.ToString();
+            string trimmedUrl = dynamicuri.Replace("/OutgoinglabMvc", "/api/");
+            client.BaseAddress = new Uri(trimmedUrl);
+
+            //client.BaseAddress = new Uri("http://localhost:57305/api/");
             var response = client.GetAsync("outgoinglabapi");
             response.Wait();
             var result = response.Result;
@@ -36,7 +41,9 @@ namespace OutGoingLab.Controllers
         {
             if (ModelState.IsValid)
             {
-                client.BaseAddress = new Uri("http://localhost:57305/api/");
+                var dynamicuri = Request.Url.ToString();
+                string trimmedUrl = dynamicuri.Replace("/OutgoinglabMvc", "/api/");
+                client.BaseAddress = new Uri(trimmedUrl);
                 var request = client.PostAsJsonAsync<Outgoinglab>("outgoinglabapi", ol);
                 request.Wait();
                 var test = request.Result;
@@ -52,7 +59,10 @@ namespace OutGoingLab.Controllers
         public ActionResult Edit(int id)
         {
             List<Outgoinglab> outgoingLabList = new List<Outgoinglab>();
-            client.BaseAddress = new Uri("http://localhost:57305/api/");
+            // client.BaseAddress = new Uri("http://localhost:57305/api/");
+            var dynamicuri = Request.Url.ToString();
+            string trimmedUrl = dynamicuri.Replace($"/OutgoinglabMvc/Edit/{id}", "/api/");
+            client.BaseAddress = new Uri(trimmedUrl);
             var response = client.GetAsync("outgoinglabapi");
             response.Wait();
             var result = response.Result;
@@ -70,7 +80,10 @@ namespace OutGoingLab.Controllers
         {
             if (ModelState.IsValid)
             {
-                client.BaseAddress = new Uri("http://localhost:57305/api/");
+                var dynamicuri = Request.Url.ToString();
+                string trimmedUrl = dynamicuri.Replace($"/OutgoinglabMvc/Edit/{id}", "/api/");
+                client.BaseAddress = new Uri(trimmedUrl);
+                //client.BaseAddress = new Uri("http://localhost:57305/api/");
                 var response = client.PutAsJsonAsync<Outgoinglab>($"outgoinglabapi?Id={id}", e);
                 response.Wait();
 
