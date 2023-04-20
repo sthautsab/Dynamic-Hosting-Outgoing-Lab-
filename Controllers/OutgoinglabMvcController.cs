@@ -2,7 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Web.Mvc;
+
+
 
 namespace OutGoingLab.Controllers
 {
@@ -10,10 +14,14 @@ namespace OutGoingLab.Controllers
     {
 
         HttpClient client = new HttpClient();
+
         [HttpGet]
         public ActionResult Index()
         {
             List<Outgoinglab> outgoingLabList = new List<Outgoinglab>();
+            //adding authentication header
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+           "Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes("Utsab:shrestha")));
 
             var dynamicuri = Request.Url.ToString();
             string trimmedUrl = dynamicuri.Replace("/OutgoinglabMvc", "/api/");
@@ -41,6 +49,9 @@ namespace OutGoingLab.Controllers
         {
             if (ModelState.IsValid)
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+           "Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes("Utsab:shrestha")));
+
                 var dynamicuri = Request.Url.ToString();
                 string trimmedUrl = dynamicuri.Replace("/OutgoinglabMvc", "/api/");
                 client.BaseAddress = new Uri(trimmedUrl);
@@ -60,6 +71,9 @@ namespace OutGoingLab.Controllers
         {
             List<Outgoinglab> outgoingLabList = new List<Outgoinglab>();
             // client.BaseAddress = new Uri("http://localhost:57305/api/");
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+           "Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes("Utsab:shrestha")));
+
             var dynamicuri = Request.Url.ToString();
             string trimmedUrl = dynamicuri.Replace($"/OutgoinglabMvc/Edit/{id}", "/api/");
             client.BaseAddress = new Uri(trimmedUrl);
@@ -80,6 +94,9 @@ namespace OutGoingLab.Controllers
         {
             if (ModelState.IsValid)
             {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+           "Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes("Utsab:shrestha")));
+
                 var dynamicuri = Request.Url.ToString();
                 string trimmedUrl = dynamicuri.Replace($"/OutgoinglabMvc/Edit/{id}", "/api/");
                 client.BaseAddress = new Uri(trimmedUrl);

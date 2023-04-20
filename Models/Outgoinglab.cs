@@ -16,7 +16,7 @@ namespace OutGoingLab.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required]
-        //[Display(Name = "Mobile No *")]
+        [Display(Name = "Mobile No")]
         [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be of 10 digits")]
         public string MobileNo { get; set; }
         public string ContactPerson { get; set; }

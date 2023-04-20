@@ -1,11 +1,18 @@
 ﻿@model IEnumerable<OutGoingLab.Models.Outgoinglab>
 
+@*@model OutGoingLab.Models.Outgoinglab*@
+
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
+
+@*@Html.Partial("View", Model);*@
+@*@RenderPage("~/Views/OutgoinglabMvc/Create.cshtml", Model)*@
 
 <p>
     @Html.ActionLink("Create New", "Create",null ,new {@class = "btn btn-success"})
@@ -18,9 +25,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Location)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Details)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.IsSync_Bit)
         </th>
@@ -43,6 +48,9 @@
             @Html.DisplayNameFor(model => model.IsActive_Bit)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Details)
+        </th>
+        <th>
             Action
         </th>
     </tr>
@@ -55,9 +63,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Location)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Details)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.IsSync_Bit)
         </td>
@@ -80,9 +86,12 @@
             @Html.DisplayFor(modelItem => item.IsActive_Bit)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new  {@class = "btn btn-primary"}) 
-           @* @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-           @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
+            @Html.DisplayFor(modelItem => item.Details)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+            @* @Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+            @* @Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
         </td>
     </tr>
 }

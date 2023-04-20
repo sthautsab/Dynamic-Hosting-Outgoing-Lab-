@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Basic_Authentication.Authentication;
 using System.Web.Http;
 
 namespace OutGoingLab
@@ -12,6 +10,7 @@ namespace OutGoingLab
             // Web API configuration and services
 
             // Web API routes
+            config.Filters.Add(new BasicAuthenticationAttribute());
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

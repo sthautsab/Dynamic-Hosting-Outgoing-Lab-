@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace OutGoingLab.Controllers
 {
+    [Authorize]
     public class OutgoinglabApiController : ApiController
     {
         Dal ud = new Dal();

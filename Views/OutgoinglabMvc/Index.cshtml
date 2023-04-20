@@ -1,11 +1,18 @@
 ﻿@model IEnumerable<OutGoingLab.Models.Outgoinglab>
 
+@*@model OutGoingLab.Models.Outgoinglab*@
+
+
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
+
+@*@Html.Partial("View", Model);*@
+@*@RenderPage("~/Views/OutgoinglabMvc/Create.cshtml", Model)*@
 
 <p>
     @Html.ActionLink("Create New", "Create",null ,new {@class = "btn btn-success"})
