@@ -273,6 +273,7 @@
     <Content Include="Views\OutgoinglabMvc\Create.cshtml" />
     <Content Include="Views\OutgoinglabMvc\Edit.cshtml" />
     <Content Include="Views\Shared\View.cshtml" />
+    <Content Include="Views\OutgoinglabMvc\Integrate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

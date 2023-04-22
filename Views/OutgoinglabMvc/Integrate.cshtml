@@ -1,0 +1,26 @@
+﻿@*@model OutGoingLab.Models.Outgoinglab;*@
+@{
+    ViewBag.Title = "Integrate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .container{
+        padding:0 80px;
+    }
+    .tablee{
+        width:60% !important;
+    }
+</style>
+
+
+<div class="row container" >
+    <div class="col-lg-4 ">
+        @Html.Action("Create");
+    </div>
+
+    <div class="col-lg-8 tablee">
+        @Html.Action("Index");
+    </div>
+
+</div>
+

@@ -107,13 +107,17 @@ namespace OutGoingLab.Controllers
                 var result = response.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Integrate");
                 }
             }
             return View("Edit");
 
         }
 
+        public ActionResult Integrate()
+        {
+            return View();
+        }
 
 
 
